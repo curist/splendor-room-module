@@ -1,0 +1,11 @@
+{
+  "name": "splendor-room-module",
+  "version": "1.0.0",
+  "description": "splendor game logic as a room module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo"
+  },
+  "author": "curist",
+  "license": "MIT"
+}
