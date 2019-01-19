@@ -41,7 +41,6 @@ export interface Player {
 }
 export declare const actionStrings: {
     'game/init': number;
-    'game/undo': number;
     'game/exit': number;
     'gameaction/pick-card': number;
     'gameaction/take-resource': number;
@@ -53,6 +52,9 @@ export declare const actionStrings: {
     'gameaction/cancel': number;
     'gameaction/drop-resources': number;
     'gameaction/pick-noble': number;
+    'gameevent/turn': number;
+    'gameevent/drop-resource': number;
+    'gameevent/pick-noble': number;
 };
 export declare type Action = keyof typeof actionStrings;
 export {};

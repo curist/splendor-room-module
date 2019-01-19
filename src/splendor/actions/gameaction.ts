@@ -44,7 +44,6 @@ B.on('gameaction/take-resource', (db, action) => {
 });
 
 B.on('gameaction/take-resources', (db, action) => {
-  console.log(action)
   const playerIndex = db.get(['game', 'current-player']);
   const { resources } = action;
   Object.keys(resources).forEach(type => {
@@ -240,6 +239,7 @@ function nextPlayer(db) {
 
   const actor = getActor(db, nextPlayer);
   if(actor.isAI && db.get(['game-settings', 'observer-mode'])) {
+    // TODO let the game host to trigger 'gameevent/turn' ???
     return;
   }
   B.exec(db, { action: 'gameevent/turn' });
