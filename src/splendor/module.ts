@@ -37,9 +37,9 @@ const validate: Validator<State, Action> = (state, action, {
   ownerId,
   context: { players: { players, playerIdMapping } }
 }) => {
-  const validActionType = isReducerAction(state.type)
+  const validActionType = isReducerAction(action.type)
   if(!validActionType) {
-    return new Error(`Invalid action type: ${state.type}`)
+    return new Error(`Invalid action type: ${action.type}`)
   }
   const actionType: ReducerAction = action.type
   const playerIndex = playerIdMapping[userId]

@@ -19,9 +19,9 @@ function isReducerAction(s) {
     return s in isReducerAction;
 }
 const validate = (state, action, { userId, ownerId, context: { players: { players, playerIdMapping } } }) => {
-    const validActionType = isReducerAction(state.type);
+    const validActionType = isReducerAction(action.type);
     if (!validActionType) {
-        return new Error(`Invalid action type: ${state.type}`);
+        return new Error(`Invalid action type: ${action.type}`);
     }
     const actionType = action.type;
     const playerIndex = playerIdMapping[userId];
