@@ -43,7 +43,7 @@ const validate: Validator<State, Action> = (state, action, {
   const actionType: ReducerAction = action.type
   const playerIndex = playerIdMapping[userId]
   const db = new Boabab(state)
-  const currentPlayerIndex = db.get(['game', 'current-player']) || -1
+  const currentPlayerIndex = db.get(['game', 'current-player'])
   switch(actionType) {
     case 'game/init': {
       if(userId !== ownerId) {
