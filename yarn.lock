@@ -31,10 +31,10 @@ ms@^2.1.1:
   resolved "https://registry.yarnpkg.com/ms/-/ms-2.1.1.tgz#30a5864eb3ebb0a66f2ebe6d727af06a09d86e0a"
   integrity sha512-tgp+dl5cGk28utYktBsrFqA7HKgrhgPsg6Z/EfhWI4gl1Hwq8B/GmY/0oXZ6nF8hDVesS/FpnYaD/kOWhYQvyg==
 
-room-module-types@^1.1.1:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/room-module-types/-/room-module-types-1.1.1.tgz#6c739a9811d7ccbe04ad2061c480ce458bc30b01"
-  integrity sha512-w3wS6Hv00YHHrntOQTLkOlULM2HS3IxbcxNnKE8St7tMq5PPoU56IlO0Yz8pExeB25YMqzsCPc9ITwUjlGzjtg==
+room-module-types@^1.4.0:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/room-module-types/-/room-module-types-1.4.0.tgz#32177a07bf51e41305c4e69483e1659d70a9b99e"
+  integrity sha512-yuG5WtOwQQv6xb1ETxgbGFLIf9ogqS/3SGLRf5sLyQb9kuFpx96dG5kO2KAYdaJdo/3QN4a9SwHClohcs+r4Yg==
 
 seedrandom@^2.4.4:
   version "2.4.4"

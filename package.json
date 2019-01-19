@@ -10,7 +10,7 @@
   "license": "MIT",
   "devDependencies": {
     "@types/node": "^10.12.18",
-    "room-module-types": "^1.1.1"
+    "room-module-types": "^1.4.0"
   },
   "dependencies": {
     "baobab": "^2.5.2",

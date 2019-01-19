@@ -16,5 +16,4 @@ var CardStatus;
     CardStatus["hold"] = "hold";
     CardStatus["board"] = "board";
 })(CardStatus = exports.CardStatus || (exports.CardStatus = {}));
-;
 //# sourceMappingURL=types.js.map

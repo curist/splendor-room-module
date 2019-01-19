@@ -39,4 +39,5 @@ export interface Player {
     score: number;
     reservedCards: Card[];
 }
+export declare type Action = 'game/init' | 'game/undo' | 'game/exit' | 'gameaction/pick-card' | 'gameaction/take-resource' | 'gameaction/take-resources' | 'gameaction/hold-a-rank-card' | 'gameaction/blind-hold' | 'gameaction/acquire-card' | 'gameaction/reserve-card' | 'gameaction/cancel' | 'gameaction/drop-resources' | 'gameaction/pick-noble';
 export {};
