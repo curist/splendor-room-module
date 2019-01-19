@@ -48,7 +48,7 @@ const validate: Validator<State, Action> = (state, action, {
     case 'game/init': {
       if(userId !== ownerId) {
         return new Error('Only owner can init a game')
-      } else if(currentPlayerIndex !== -1) {
+      } else if(currentPlayerIndex !== undefined) {
         return new Error('Game already started')
       } else {
         return null

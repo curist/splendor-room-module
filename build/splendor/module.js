@@ -32,7 +32,7 @@ const validate = (state, action, { userId, ownerId, context: { players: { player
             if (userId !== ownerId) {
                 return new Error('Only owner can init a game');
             }
-            else if (currentPlayerIndex !== -1) {
+            else if (currentPlayerIndex !== undefined) {
                 return new Error('Game already started');
             }
             else {
