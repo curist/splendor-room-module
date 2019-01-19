@@ -48,18 +48,20 @@ export interface Player {
   reservedCards: Card[];
 }
 
-export type Action =
-  'game/init' |
-  'game/undo' |
-  'game/exit' |
-  'gameaction/pick-card' |
-  'gameaction/take-resource' |
-  'gameaction/take-resources' |
-  'gameaction/hold-a-rank-card' |
-  'gameaction/blind-hold' |
-  'gameaction/acquire-card' |
-  'gameaction/reserve-card' |
-  'gameaction/cancel' |
-  'gameaction/drop-resources' |
-  'gameaction/pick-noble'
+export const actionStrings = {
+  'game/init': 1,
+  'game/undo': 1,
+  'game/exit': 1,
+  'gameaction/pick-card': 1,
+  'gameaction/take-resource': 1,
+  'gameaction/take-resources': 1,
+  'gameaction/hold-a-rank-card': 1,
+  'gameaction/blind-hold': 1,
+  'gameaction/acquire-card': 1,
+  'gameaction/reserve-card': 1,
+  'gameaction/cancel': 1,
+  'gameaction/drop-resources': 1,
+  'gameaction/pick-noble': 1,
+}
 
+export type Action = keyof typeof actionStrings

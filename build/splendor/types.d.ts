@@ -39,5 +39,20 @@ export interface Player {
     score: number;
     reservedCards: Card[];
 }
-export declare type Action = 'game/init' | 'game/undo' | 'game/exit' | 'gameaction/pick-card' | 'gameaction/take-resource' | 'gameaction/take-resources' | 'gameaction/hold-a-rank-card' | 'gameaction/blind-hold' | 'gameaction/acquire-card' | 'gameaction/reserve-card' | 'gameaction/cancel' | 'gameaction/drop-resources' | 'gameaction/pick-noble';
+export declare const actionStrings: {
+    'game/init': number;
+    'game/undo': number;
+    'game/exit': number;
+    'gameaction/pick-card': number;
+    'gameaction/take-resource': number;
+    'gameaction/take-resources': number;
+    'gameaction/hold-a-rank-card': number;
+    'gameaction/blind-hold': number;
+    'gameaction/acquire-card': number;
+    'gameaction/reserve-card': number;
+    'gameaction/cancel': number;
+    'gameaction/drop-resources': number;
+    'gameaction/pick-noble': number;
+};
+export declare type Action = keyof typeof actionStrings;
 export {};

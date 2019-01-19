@@ -7,6 +7,7 @@ const baobab_1 = __importDefault(require("baobab"));
 const broker_1 = __importDefault(require("./broker"));
 require("./actions/index");
 const room_module_types_1 = require("room-module-types");
+const types_1 = require("./types");
 const dependencies = [room_module_types_1.RoomModuleType.Players];
 const defaultState = {};
 const reducer = (state, action, { userId, ownerId, context: { players: { players, playerIdMapping } } }) => {
@@ -16,7 +17,7 @@ const reducer = (state, action, { userId, ownerId, context: { players: { players
     return db.get();
 };
 function isReducerAction(s) {
-    return s in isReducerAction;
+    return types_1.actionStrings[s] === 1;
 }
 const validate = (state, action, { userId, ownerId, context: { players: { players, playerIdMapping } } }) => {
     const validActionType = isReducerAction(action.type);

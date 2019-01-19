@@ -4,7 +4,7 @@ import './actions/index'
 import { RoomModuleReducer as Reducer, RoomModuleValidator as Validator } from 'room-module-types'
 import { RoomReducerModule, RoomModuleType } from 'room-module-types'
 
-import { Action as ReducerAction } from './types'
+import { Action as ReducerAction, actionStrings } from './types'
 
 const dependencies = [ RoomModuleType.Players ]
 
@@ -29,7 +29,7 @@ const reducer: Reducer<State, Action> = (state, action, {
 }
 
 function isReducerAction(s: string): s is ReducerAction {
-  return s in isReducerAction
+  return actionStrings[s] === 1
 }
 
 const validate: Validator<State, Action> = (state, action, {

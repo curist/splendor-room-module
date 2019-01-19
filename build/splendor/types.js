@@ -16,4 +16,19 @@ var CardStatus;
     CardStatus["hold"] = "hold";
     CardStatus["board"] = "board";
 })(CardStatus = exports.CardStatus || (exports.CardStatus = {}));
+exports.actionStrings = {
+    'game/init': 1,
+    'game/undo': 1,
+    'game/exit': 1,
+    'gameaction/pick-card': 1,
+    'gameaction/take-resource': 1,
+    'gameaction/take-resources': 1,
+    'gameaction/hold-a-rank-card': 1,
+    'gameaction/blind-hold': 1,
+    'gameaction/acquire-card': 1,
+    'gameaction/reserve-card': 1,
+    'gameaction/cancel': 1,
+    'gameaction/drop-resources': 1,
+    'gameaction/pick-noble': 1,
+};
 //# sourceMappingURL=types.js.map
