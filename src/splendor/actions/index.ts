@@ -1,7 +1,7 @@
 // bind actions
-import './game';
-import './gameaction';
+import './game'
+import './gameaction'
 
-// TODO handle AI interactions later
-// require('./gameevent');
+// game event for AI to interact
+import './gameevent'
 

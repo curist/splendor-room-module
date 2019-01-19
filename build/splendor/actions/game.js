@@ -7,7 +7,6 @@ const broker_1 = __importDefault(require("../broker"));
 const underscore_1 = __importDefault(require("underscore"));
 const utils_1 = require("../utils");
 const seedrandom_1 = __importDefault(require("seedrandom"));
-// import { initActors } from '../AI/actors';
 const game_setting_1 = __importDefault(require("../data/game-setting"));
 const types_1 = require("../types");
 const cards_1 = __importDefault(require("../data/cards"));
@@ -103,7 +102,6 @@ broker_1.default.on('game/init', (db, action) => {
         players,
     });
     db.set(['actor-stores'], [{}, {}, {}, {}]);
-    // initActors(playerActors);
     broker_1.default.transit(db, 'gameevent/turn');
 });
 broker_1.default.on('game/undo', db => {

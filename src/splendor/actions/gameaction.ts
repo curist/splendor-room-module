@@ -8,7 +8,7 @@ import {
   canTakeNoble,
   shouldDropResources,
 } from '../validates';
-// import { getActors } from 'splendor/AI/actors';
+import { getActor } from '../AI/actors';
 
 const debug = require('debug')('splendor/actions/gameaction');
 
@@ -240,10 +240,10 @@ function nextPlayer(db) {
   }
   db.set(['game', 'current-player'], nextPlayer);
 
-  // const actor = getActors()[nextPlayer];
-  // if(actor.isAI && db.get(['game-settings', 'observer-mode'])) {
-  //   return;
-  // }
+  const actor = getActor(db, nextPlayer);
+  if(actor.isAI && db.get(['game-settings', 'observer-mode'])) {
+    return;
+  }
   B.exec(db, { action: 'gameevent/turn' });
 }
 

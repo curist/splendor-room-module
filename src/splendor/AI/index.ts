@@ -2,7 +2,7 @@ import Dumb from './ai_dumb';
 import Easy from './ai_easy';
 import Normal from './ai_normal';
 
-module.exports = {
+export default {
   dumb: Dumb,
   easy: Easy,
   normal: Normal,

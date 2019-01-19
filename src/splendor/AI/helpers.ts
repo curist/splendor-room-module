@@ -1,5 +1,5 @@
 import _ from 'underscore';
-import { canBuyCard } from 'app/validates';
+import { canBuyCard } from '../validates';
 
 export const colors = [
   'white', 'blue', 'green', 'red', 'black'

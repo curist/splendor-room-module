@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const broker_1 = __importDefault(require("../broker"));
 const types_1 = require("../types");
 const validates_1 = require("../validates");
-// import { getActors } from 'splendor/AI/actors';
+const actors_1 = require("../AI/actors");
 const debug = require('debug')('splendor/actions/gameaction');
 // XXX
 // action flows
@@ -213,10 +213,10 @@ function nextPlayer(db) {
         db.apply(['game', 'turn'], plus(1));
     }
     db.set(['game', 'current-player'], nextPlayer);
-    // const actor = getActors()[nextPlayer];
-    // if(actor.isAI && db.get(['game-settings', 'observer-mode'])) {
-    //   return;
-    // }
+    const actor = actors_1.getActor(db, nextPlayer);
+    if (actor.isAI && db.get(['game-settings', 'observer-mode'])) {
+        return;
+    }
     broker_1.default.exec(db, { action: 'gameevent/turn' });
 }
 // returning `player` after pay for the card

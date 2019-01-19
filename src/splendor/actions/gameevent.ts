@@ -2,7 +2,7 @@ import _ from 'underscore';
 import B from '../broker';
 
 import { validateAction } from '../validates';
-import { getActors } from '../AI/actors';
+import { getActor } from '../AI/actors';
 import { composeGameState } from './helpers';
 
 // THIS FILE IS TO PROVIDER AN INTERFACE TO INTERACT WITH AI
@@ -14,7 +14,7 @@ B.on('gameevent/turn', (db, action) => {
   const playerIndex = db.get(['game', 'current-player']);
   const player = db.get(['game', 'players', playerIndex]);
 
-  const actor = getActors()[playerIndex];
+  const actor = getActor(db, playerIndex);
   if(!actor.isAI) {
     return;
   }
@@ -60,7 +60,7 @@ B.on('gameevent/drop-resource', (db, action) => {
   if(player.actor == 'human') {
     return;
   }
-  const actor = getActors()[playerIndex];
+  const actor = getActor(db, playerIndex);
   const gameState = composeGameState(db);
 
   const droppingResources = actor.dropResources(gameState, player.resources);
@@ -81,7 +81,7 @@ B.on('gameevent/pick-noble', (db, action) => {
   if(player.actor == 'human') {
     return;
   }
-  const actor = getActors()[playerIndex];
+  const actor = getActor(db, playerIndex);
   const gameState = composeGameState(db);
 
   const noble = actor.pickNoble(gameState, nobles);

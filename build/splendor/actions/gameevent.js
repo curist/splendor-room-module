@@ -13,7 +13,7 @@ broker_1.default.on('gameevent/turn', (db, action) => {
     const resources = db.get(['game', 'resources']);
     const playerIndex = db.get(['game', 'current-player']);
     const player = db.get(['game', 'players', playerIndex]);
-    const actor = actors_1.getActors()[playerIndex];
+    const actor = actors_1.getActor(db, playerIndex);
     if (!actor.isAI) {
         return;
     }
@@ -55,7 +55,7 @@ broker_1.default.on('gameevent/drop-resource', (db, action) => {
     if (player.actor == 'human') {
         return;
     }
-    const actor = actors_1.getActors()[playerIndex];
+    const actor = actors_1.getActor(db, playerIndex);
     const gameState = helpers_1.composeGameState(db);
     const droppingResources = actor.dropResources(gameState, player.resources);
     let gameAction = {
@@ -73,7 +73,7 @@ broker_1.default.on('gameevent/pick-noble', (db, action) => {
     if (player.actor == 'human') {
         return;
     }
-    const actor = actors_1.getActors()[playerIndex];
+    const actor = actors_1.getActor(db, playerIndex);
     const gameState = helpers_1.composeGameState(db);
     const noble = actor.pickNoble(gameState, nobles);
     let gameAction = {

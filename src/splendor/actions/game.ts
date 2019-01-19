@@ -4,8 +4,6 @@ import { shuffle } from '../utils'
 
 import seedrandom from 'seedrandom';
 
-// import { initActors } from '../AI/actors';
-
 import setting from '../data/game-setting';
 import { Noble, Card, CardStatus, colors } from '../types'
 import cards from '../data/cards';
@@ -143,7 +141,6 @@ B.on('game/init', (db, action) => {
   });
 
   db.set(['actor-stores'], [{}, {}, {}, {}]);
-  // initActors(playerActors);
 
   B.transit(db, 'gameevent/turn')
 });

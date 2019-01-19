@@ -5,7 +5,7 @@ import {
   zipResources,
 } from './helpers';
 
-const debug = require('debug')('app/AI/normal');
+import { Actor } from './actors'
 
 const colors = [
   'white', 'blue', 'green', 'red', 'black'
@@ -36,45 +36,45 @@ function cardCost(player, card) {
   return shortOf * 2.5 + cost;
 }
 
-function calcColorsTotal(cards) {
-  const allColors = cards.reduce((colorCount, card) => {
-    colors.forEach(color => {
-      colorCount[color] += card[color];
-    });
-    return colorCount;
-  }, {
-    white: 0,
-    blue: 0,
-    green: 0,
-    red: 0,
-    black: 0,
-  });
+// function calcColorsTotal(cards) {
+//   const allColors = cards.reduce((colorCount, card) => {
+//     colors.forEach(color => {
+//       colorCount[color] += card[color];
+//     });
+//     return colorCount;
+//   }, {
+//     white: 0,
+//     blue: 0,
+//     green: 0,
+//     red: 0,
+//     black: 0,
+//   });
 
-  return allColors;
-}
+//   return allColors;
+// }
 
-function calcColorFreq(cards) {
-  const allColors = cards.reduce((colorCount, card) => {
-    colors.forEach(color => {
-      colorCount[color] += 1;
-    });
-    return colorCount;
-  }, {
-    white: 0,
-    blue: 0,
-    green: 0,
-    red: 0,
-    black: 0,
-  });
+// function calcColorFreq(cards) {
+//   const allColors = cards.reduce((colorCount, card) => {
+//     colors.forEach(color => {
+//       colorCount[color] += 1;
+//     });
+//     return colorCount;
+//   }, {
+//     white: 0,
+//     blue: 0,
+//     green: 0,
+//     red: 0,
+//     black: 0,
+//   });
 
-  return allColors;
-}
+//   return allColors;
+// }
 
 function cardValue(player, state, cards, card) {
   const { nobles } = state;
   const { provides } = card;
-  const colorsTotal = calcColorsTotal(cards);
-  const colorsFreq = calcColorFreq(cards);
+  // const colorsTotal = calcColorsTotal(cards);
+  // const colorsFreq = calcColorFreq(cards);
 
   function cardNobleValue(player, noble) {
     // card don't provide noble's need
@@ -117,7 +117,6 @@ function cardValue(player, state, cards, card) {
   }
 
   function valueForPlayer(player, card) {
-    const { provides } = card;
     const cost = cardCost(player, card);
 
     const totalNobleValue = nobles.reduce((total, noble) => {
@@ -138,7 +137,6 @@ function cardValue(player, state, cards, card) {
 }
 
 function getBestCards(player, state, cards) {
-  const { nobles } = state;
   const sortedCards = cards.map(card => {
     return Object.assign({
       value: cardValue(player, state, cards, card)
@@ -167,7 +165,11 @@ function colorValue(player, cards, state, color) {
   return diffTotal + scarcity;
 }
 
-export default class Normal {
+export default class Normal implements Actor {
+  store: any;
+  playerIndex: number;
+  playerCount: number;
+  winGameScore: number;
   constructor (store, playerIndex, playerCount, winGameScore) {
     this.store = store;
     this.playerIndex = playerIndex;
@@ -182,7 +184,7 @@ export default class Normal {
     const affordableCards = getAffordableCards(player, allCards);
 
     // try to buy the best card
-    const card = getBestCard(player, state, allCards);
+    // const card = getBestCard(player, state, allCards);
     const bestCards = getBestCards(player, state, allCards);
     const bestCard = bestCards[0];
     if(hasEnoughResourceForCard(player, bestCard)) {
@@ -194,7 +196,7 @@ export default class Normal {
 
     // if we can't buy the best card, take resources
 
-    const allBonus = calcColorsTotal(allCards);
+    // const allBonus = calcColorsTotal(allCards);
     const resCount = countResources(player.resources);
     const topCards = bestCards.slice(0,3);
     if(resCount <= 7) {

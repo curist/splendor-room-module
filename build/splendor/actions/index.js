@@ -3,6 +3,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 // bind actions
 require("./game");
 require("./gameaction");
-// TODO handle AI interactions later
-// require('./gameevent');
+// game event for AI to interact
+require("./gameevent");
 //# sourceMappingURL=index.js.map
