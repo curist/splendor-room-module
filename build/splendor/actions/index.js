@@ -1,8 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 // bind actions
-require("./actions/game");
-require("./actions/gameaction");
+require("./game");
+require("./gameaction");
 // TODO handle AI interactions later
-// require('./actions/gameevent');
+// require('./gameevent');
 //# sourceMappingURL=index.js.map
