@@ -1,7 +1,10 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-const baobab_1 = require("baobab");
-const broker_1 = require("./broker");
+const baobab_1 = __importDefault(require("baobab"));
+const broker_1 = __importDefault(require("./broker"));
 require("./actions/index");
 const room_module_types_1 = require("room-module-types");
 const dependencies = [room_module_types_1.RoomModuleType.Players];

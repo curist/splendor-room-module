@@ -1,14 +1,17 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-const broker_1 = require("../broker");
-const underscore_1 = require("underscore");
+const broker_1 = __importDefault(require("../broker"));
+const underscore_1 = __importDefault(require("underscore"));
 const utils_1 = require("../utils");
-const seedrandom_1 = require("seedrandom");
+const seedrandom_1 = __importDefault(require("seedrandom"));
 // import { initActors } from '../AI/actors';
-const game_setting_1 = require("../data/game-setting");
+const game_setting_1 = __importDefault(require("../data/game-setting"));
 const types_1 = require("../types");
-const cards_1 = require("../data/cards");
-const nobles_1 = require("../data/nobles");
+const cards_1 = __importDefault(require("../data/cards"));
+const nobles_1 = __importDefault(require("../data/nobles"));
 const nobles = nobles_1.default.map((noble, i) => {
     return Object.assign({ key: i }, noble);
 });

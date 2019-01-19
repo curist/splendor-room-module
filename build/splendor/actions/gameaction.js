@@ -1,6 +1,9 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-const broker_1 = require("../broker");
+const broker_1 = __importDefault(require("../broker"));
 const types_1 = require("../types");
 const validates_1 = require("../validates");
 // import { getActors } from 'splendor/AI/actors';

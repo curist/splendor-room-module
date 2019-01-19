@@ -1,6 +1,9 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-const broker_1 = require("../broker");
+const broker_1 = __importDefault(require("../broker"));
 const validates_1 = require("../validates");
 const actors_1 = require("../AI/actors");
 const helpers_1 = require("./helpers");
