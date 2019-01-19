@@ -1,6 +1,6 @@
 {
   "name": "splendor-room-module",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "splendor game logic as a room module",
   "main": "build/index.js",
   "scripts": {
