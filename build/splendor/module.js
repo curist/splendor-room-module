@@ -28,16 +28,21 @@ const validate = (state, action, { userId, ownerId, context: { players: { player
     const playerIndex = playerIdMapping[userId];
     const db = new baobab_1.default(state);
     const currentPlayerIndex = db.get(['game', 'current-player']) || -1;
-    if (playerIndex !== currentPlayerIndex) {
-        return new Error(`Current active player is ${currentPlayerIndex}`);
-    }
     switch (actionType) {
         case 'game/init': {
             if (userId !== ownerId) {
                 return new Error('Only owner can init a game');
             }
-            break;
+            else if (currentPlayerIndex !== -1) {
+                return new Error('Game already started');
+            }
+            else {
+                return null;
+            }
         }
+    }
+    if (playerIndex !== currentPlayerIndex) {
+        return new Error(`Current active player is ${currentPlayerIndex}`);
     }
     return null;
 };
