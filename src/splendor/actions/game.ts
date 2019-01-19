@@ -43,8 +43,6 @@ function changeCardStatus(status: CardStatus) {
 }
 
 B.on('game/init', (db, action) => {
-  db.set('game-states', []);
-
   const {
     players: playerActors,
     winGameScore, mode, rounds,
@@ -143,14 +141,6 @@ B.on('game/init', (db, action) => {
   db.set(['actor-stores'], [{}, {}, {}, {}]);
 
   B.transit(db, 'gameevent/turn')
-});
-
-B.on('game/undo', db => {
-  const states = db.get('game-states');
-  if(states.length > 0) {
-    db.set('game', states[states.length - 1]);
-    db.pop('game-states');
-  }
 });
 
 B.on('game/exit', db => {

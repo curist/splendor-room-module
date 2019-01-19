@@ -23,7 +23,6 @@ function changeCardStatus(status) {
     };
 }
 broker_1.default.on('game/init', (db, action) => {
-    db.set('game-states', []);
     const { players: playerActors, winGameScore, mode, rounds, seed, fast, observer } = action;
     const playerCount = playerActors.length;
     db.set('game-settings', {
@@ -103,13 +102,6 @@ broker_1.default.on('game/init', (db, action) => {
     });
     db.set(['actor-stores'], [{}, {}, {}, {}]);
     broker_1.default.transit(db, 'gameevent/turn');
-});
-broker_1.default.on('game/undo', db => {
-    const states = db.get('game-states');
-    if (states.length > 0) {
-        db.set('game', states[states.length - 1]);
-        db.pop('game-states');
-    }
 });
 broker_1.default.on('game/exit', db => {
     db.unset(['game']);

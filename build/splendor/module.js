@@ -13,7 +13,6 @@ const defaultState = {};
 const reducer = (state, action, { userId, ownerId, context: { players: { players, playerIdMapping } } }) => {
     const db = new baobab_1.default(state, { immutable: false });
     broker_1.default.transit(db, action.type, action);
-    db.set('game-states', []);
     return db.get();
 };
 function isReducerAction(s) {
@@ -53,7 +52,6 @@ const transformState = (state, { userId }) => {
     state.game.deck1 = state.game.deck1.length;
     state.game.deck2 = state.game.deck2.length;
     state.game.deck3 = state.game.deck3.length;
-    delete state.game['game-states'];
     return state;
 };
 const roomModule = {

@@ -45,7 +45,6 @@ B.on('gameaction/take-resource', (db, action) => {
 
 B.on('gameaction/take-resources', (db, action) => {
   console.log(action)
-  pushGameState(db);
   const playerIndex = db.get(['game', 'current-player']);
   const { resources } = action;
   Object.keys(resources).forEach(type => {
@@ -64,7 +63,6 @@ B.on('gameaction/hold-a-rank-card', (db, action) => {
 });
 
 B.on('gameaction/blind-hold', (db, action) => {
-  pushGameState(db);
   const { rank } = action;
   const playerIndex = db.get(['game', 'current-player']);
   const nextCard = db.get(['game', 'deck' + rank, 0]);
@@ -272,13 +270,7 @@ function playerAcquireCard(oplayer, card) {
   return [ pay, player ];
 }
 
-// save game state for undo history
-function pushGameState(db) {
-  db.select('game-states').push(db.get('game'));
-}
-
 B.on('gameaction/acquire-card', (db, action) => {
-  pushGameState(db);
   const { card } = action;
   const playerIndex = db.get(['game', 'current-player']);
   const player = db.get(['game', 'players', playerIndex]);
@@ -301,7 +293,6 @@ B.on('gameaction/acquire-card', (db, action) => {
 });
 
 B.on('gameaction/reserve-card', (db, action) => {
-  pushGameState(db);
   const { card: ocard } = action;
   const playerIndex = db.get(['game', 'current-player']);
   const gold = db.get(['game', 'resources', 'gold']);
@@ -329,7 +320,6 @@ B.on('gameaction/cancel', db => {
 });
 
 B.on('gameaction/drop-resources', (db, action) => {
-  pushGameState(db);
   const playerIndex = db.get(['game', 'current-player']);
   const { resources: dropResources } = action;
   Object.keys(dropResources).forEach(color => {
