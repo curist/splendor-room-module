@@ -54,6 +54,11 @@ const validate: Validator<State, Action> = (state, action, {
         return null
       }
     }
+    case 'game/exit': {
+      if(db.get(['game', 'show-summary'])) {
+        return null
+      }
+    }
   }
   if(playerIndex !== currentPlayerIndex) {
     return new Error(`Current active player is ${currentPlayerIndex}`)

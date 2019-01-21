@@ -39,6 +39,11 @@ const validate = (state, action, { userId, ownerId, context: { players: { player
                 return null;
             }
         }
+        case 'game/exit': {
+            if (db.get(['game', 'show-summary'])) {
+                return null;
+            }
+        }
     }
     if (playerIndex !== currentPlayerIndex) {
         return new Error(`Current active player is ${currentPlayerIndex}`);
