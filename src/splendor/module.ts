@@ -43,16 +43,19 @@ const validate: Validator<State, Action> = (state, action, {
   const actionType: ReducerAction = action.type
   const playerIndex = playerIdMapping[userId]
   const db = new Boabab(state)
-  const currentPlayerIndex = db.get(['game', 'current-player'])
-  const currentAITrun = db.get(['game-settings', 'player-actors', currentPlayerIndex]) !== 'human'
-  if(currentAITrun) {
+  let currentPlayerIndex = db.get(['game', 'current-player'])
+  if(currentPlayerIndex === undefined) {
+    currentPlayerIndex = -1
+  }
+  const currentAITurn = db.get(['game-settings', 'player-actors', currentPlayerIndex]) !== 'human'
+  if(currentAITurn) {
     return null
   }
   switch(actionType) {
     case 'game/init': {
       if(userId !== ownerId) {
         return new Error('Only owner can init a game')
-      } else if(currentPlayerIndex !== undefined) {
+      } else if(currentPlayerIndex !== -1) {
         return new Error('Game already started')
       } else {
         return null

@@ -26,9 +26,12 @@ const validate = (state, action, { userId, ownerId, context: { players: { player
     const actionType = action.type;
     const playerIndex = playerIdMapping[userId];
     const db = new baobab_1.default(state);
-    const currentPlayerIndex = db.get(['game', 'current-player']);
-    const currentAITrun = db.get(['game-settings', 'player-actors', currentPlayerIndex]) !== 'human';
-    if (currentAITrun) {
+    let currentPlayerIndex = db.get(['game', 'current-player']);
+    if (currentPlayerIndex === undefined) {
+        currentPlayerIndex = -1;
+    }
+    const currentAITurn = db.get(['game-settings', 'player-actors', currentPlayerIndex]) !== 'human';
+    if (currentAITurn) {
         return null;
     }
     switch (actionType) {
@@ -36,7 +39,7 @@ const validate = (state, action, { userId, ownerId, context: { players: { player
             if (userId !== ownerId) {
                 return new Error('Only owner can init a game');
             }
-            else if (currentPlayerIndex !== undefined) {
+            else if (currentPlayerIndex !== -1) {
                 return new Error('Game already started');
             }
             else {
