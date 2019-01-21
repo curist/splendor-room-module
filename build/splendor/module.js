@@ -27,6 +27,10 @@ const validate = (state, action, { userId, ownerId, context: { players: { player
     const playerIndex = playerIdMapping[userId];
     const db = new baobab_1.default(state);
     const currentPlayerIndex = db.get(['game', 'current-player']);
+    const currentAITrun = db.get(['game-settings', 'player-actors', currentPlayerIndex]) !== 'human';
+    if (currentAITrun) {
+        return null;
+    }
     switch (actionType) {
         case 'game/init': {
             if (userId !== ownerId) {

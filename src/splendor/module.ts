@@ -44,6 +44,10 @@ const validate: Validator<State, Action> = (state, action, {
   const playerIndex = playerIdMapping[userId]
   const db = new Boabab(state)
   const currentPlayerIndex = db.get(['game', 'current-player'])
+  const currentAITrun = db.get(['game-settings', 'player-actors', currentPlayerIndex]) !== 'human'
+  if(currentAITrun) {
+    return null
+  }
   switch(actionType) {
     case 'game/init': {
       if(userId !== ownerId) {
